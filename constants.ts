@@ -8,7 +8,8 @@ export const RESOURCES: Resource[] = [
     grade: 'Fase A',
     description: 'Modul ajar lengkap dengan LKPD dan asesmen formatif untuk materi penjumlahan 1-10.',
     date: '2024-05-10',
-    downloads: 1240
+    downloads: 1240,
+    downloadUrl: '#'
   },
   {
     id: '2',
@@ -17,7 +18,8 @@ export const RESOURCES: Resource[] = [
     grade: 'Fase B',
     description: 'Dokumen ATP IPAS untuk kelas 3 dan 4 SD sesuai Kurikulum Merdeka terbaru.',
     date: '2024-04-22',
-    downloads: 890
+    downloads: 890,
+    downloadUrl: '#'
   },
   {
     id: '3',
@@ -26,7 +28,8 @@ export const RESOURCES: Resource[] = [
     grade: 'Fase C',
     description: 'Excel otomatis Prota dan Prosem untuk kelas 6 semester 1 dan 2.',
     date: '2024-06-01',
-    downloads: 2100
+    downloads: 2100,
+    downloadUrl: '#'
   },
   {
     id: '4',
@@ -35,7 +38,8 @@ export const RESOURCES: Resource[] = [
     grade: 'Fase A',
     description: 'Panduan dan instrumen untuk melakukan asesmen diagnostik literasi awal.',
     date: '2024-05-15',
-    downloads: 560
+    downloads: 560,
+    downloadUrl: '#'
   }
 ];
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useData } from '../context/DataContext';
-import { Trash2, Plus, Lock, LayoutDashboard, FileText, BookOpen, Bell, Scale } from 'lucide-react';
+import { Trash2, Plus, Lock, LayoutDashboard, FileText, BookOpen, Bell, Scale, Link as LinkIcon } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 
 const Admin: React.FC = () => {
@@ -154,7 +154,7 @@ const Admin: React.FC = () => {
 // --- Sub-components for Forms and Lists ---
 
 const ResourceManager = ({ resources, onAdd, onDelete }: any) => {
-    const [formData, setFormData] = useState({ title: '', category: 'Modul Ajar', grade: 'Fase A', description: '' });
+    const [formData, setFormData] = useState({ title: '', category: 'Modul Ajar', grade: 'Fase A', description: '', downloadUrl: '' });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -164,7 +164,7 @@ const ResourceManager = ({ resources, onAdd, onDelete }: any) => {
             date: new Date().toISOString().split('T')[0],
             downloads: 0
         });
-        setFormData({ title: '', category: 'Modul Ajar', grade: 'Fase A', description: '' });
+        setFormData({ title: '', category: 'Modul Ajar', grade: 'Fase A', description: '', downloadUrl: '' });
         alert('Perangkat berhasil ditambahkan!');
     };
 
@@ -201,6 +201,11 @@ const ResourceManager = ({ resources, onAdd, onDelete }: any) => {
                          <textarea required className="w-full p-2 border rounded" rows={2} value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}></textarea>
                     </div>
                     <div className="col-span-2">
+                         <label className="text-sm font-medium flex items-center gap-2"><LinkIcon size={14}/> Link Download (Google Drive/PDF)</label>
+                         <input required type="url" placeholder="https://drive.google.com/..." className="w-full p-2 border rounded text-blue-600" value={formData.downloadUrl} onChange={e => setFormData({...formData, downloadUrl: e.target.value})} />
+                         <p className="text-xs text-slate-400 mt-1">Pastikan link Google Drive sudah diatur ke 'Siapa saja yang memiliki link' (Anyone with the link).</p>
+                    </div>
+                    <div className="col-span-2">
                         <button type="submit" className="bg-primary-600 text-white px-6 py-2 rounded hover:bg-primary-700">Simpan Perangkat</button>
                     </div>
                 </form>
@@ -212,7 +217,7 @@ const ResourceManager = ({ resources, onAdd, onDelete }: any) => {
                         <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Judul</th>
                             <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Kategori</th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Tanggal</th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-slate-500 uppercase">Link</th>
                             <th className="px-6 py-3 text-right text-xs font-medium text-slate-500 uppercase">Aksi</th>
                         </tr>
                     </thead>
@@ -221,7 +226,9 @@ const ResourceManager = ({ resources, onAdd, onDelete }: any) => {
                             <tr key={item.id}>
                                 <td className="px-6 py-4 text-sm font-medium text-slate-900">{item.title}</td>
                                 <td className="px-6 py-4 text-sm text-slate-500">{item.category} ({item.grade})</td>
-                                <td className="px-6 py-4 text-sm text-slate-500">{item.date}</td>
+                                <td className="px-6 py-4 text-sm text-blue-600 truncate max-w-xs">
+                                    <a href={item.downloadUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Buka Link</a>
+                                </td>
                                 <td className="px-6 py-4 text-right">
                                     <button onClick={() => onDelete(item.id)} className="text-red-600 hover:text-red-800"><Trash2 size={18} /></button>
                                 </td>

@@ -6,6 +6,7 @@ export interface Resource {
   description: string;
   date: string;
   downloads: number;
+  downloadUrl?: string;
 }
 
 export interface Article {

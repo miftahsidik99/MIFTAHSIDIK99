@@ -82,9 +82,14 @@ const Resources: React.FC = () => {
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                <button className="w-full md:w-auto px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition flex items-center justify-center">
+                                <a 
+                                    href={resource.downloadUrl || '#'}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-full md:w-auto px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition flex items-center justify-center cursor-pointer"
+                                >
                                     <Download size={18} className="mr-2" /> Download
-                                </button>
+                                </a>
                             </div>
                         </div>
                     ))
